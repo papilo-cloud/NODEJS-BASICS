@@ -1,0 +1,6 @@
+JavaScript does not have "methods" in the form that class-based
+languages define them. In JavaScript, any function can be
+added to an object in the form of a property. An inherited 
+function acts just as any other property, including property
+shadowing as shown above (in this case, a form of method
+overriding).
