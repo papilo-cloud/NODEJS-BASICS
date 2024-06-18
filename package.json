@@ -15,7 +15,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node smilga/app.js",
+    "dev": "nodemon smilga/app.js"
   },
   "author": "",
   "license": "ISC",
