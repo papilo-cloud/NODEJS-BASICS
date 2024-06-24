@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 const {logger} = require('./logger')
+const authorize = require('./authorize')
 
 // req => middleware => res 
+// 1. use / route
+// 2. options - our own / express / third party
 
 // We are importing the middleware as a separate module.
 // const logger = (req, res, next) => {
@@ -14,11 +17,19 @@ const {logger} = require('./logger')
 //     next()
 // }
 
-app.get('/', logger, (req, res) => {
+// Instead of calling the logger function everytime we use it, we can simply call it inside app.use() once.
+
+app.use([logger, authorize])
+
+app.get('/', (req, res) => {
     res.send('Home')
 })
-app.get('/about', logger, (req, res) => {
+app.get('/about', (req, res) => {
     res.send('About')
+})
+app.get('/api/products', (req, res) => {
+    console.log(req.user)
+    res.send('Hello World...')
 })
 
 app.listen(5000, () => {
