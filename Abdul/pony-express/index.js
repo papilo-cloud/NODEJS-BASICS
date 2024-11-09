@@ -1,9 +1,9 @@
-const http = require('http')
+const express = require('express')
+const app = express()
+const usersRouter = require('./routes/users')
+const emailsRouter = require('./routes/emails')
 
-let server = http.createServer((req, res) => {
-    let route = req.method + ' ' + req.url
-    console.log(res)
-    res.end('You asked for '+ route)
-})
+app.use('/users', usersRouter)
+app.use('/emails', emailsRouter)
 
-server.listen(3000)
+app.listen(3000)
