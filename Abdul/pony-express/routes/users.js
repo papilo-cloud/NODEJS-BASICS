@@ -1,18 +1,8 @@
 const express = require('express')
-const users = require('../fixtures/users.json')
-
 const usersRouter = express.Router()
+const userController = require('../controllers/users.controller')
 
-let getUsersRoute = (req, res) => {
-    res.send(users)
-}
-
-let getUserRoute = (req, res) => {
-    let user = users.find(user => user.id == req.params.id)
-    res.send(user)
-}
-
-usersRouter.get('/', getUsersRoute)
-usersRouter.get('/:id', getUserRoute)
+usersRouter.get('/', userController.getUsersRoute)
+usersRouter.get('/:id', userController.getUserRoute)
 
 module.exports = usersRouter
